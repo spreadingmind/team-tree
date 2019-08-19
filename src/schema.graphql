@@ -1,0 +1,71 @@
+enum PositionName {
+  Chief,
+  CTO,
+  CEO,
+  ProductOwner,
+  ChiefArchitect,
+  Head
+}
+
+enum DepartmentName {
+  IQOption, 
+  ProductManagement, 
+  Technology, 
+  Administration, 
+  Product,
+  Architecture, 
+  OfficeTeam
+}
+
+type Employee {
+  id: Int!,
+  firstName: String!,
+  lastName: String!
+}
+
+input EmployeeInput {
+  firstName: String!,
+  lastName: String!
+}
+
+type Position {
+  id: Int!,
+  name: PositionName!,
+  employee: Employee,
+  parentId: Int,
+  departmentName: DepartmentName!
+}
+
+input PositionInput {
+  name: PositionName!,
+  employeeId: Int,
+  parentId: Int,
+  departmentName: DepartmentName
+}
+
+type PositionTreeItem {
+  data: Position,
+  children: [PositionTreeItem],
+  primaryCount: Int,
+  totalCount: Int
+}
+
+
+type Query {
+  employee(id: Int!): Employee
+  employees: [Employee]
+  position(id: Int!): Position
+  positions: [Position]
+  positionsTree: [PositionTreeItem]
+}
+ 
+type Mutation {
+  createPosition(input: PositionInput): Position
+  updatePosition(id: Int!, input: PositionInput): Position
+  deletePosition(id: Int!): Boolean
+
+  createEmployee(input: EmployeeInput): Employee
+  updateEmployee(id: Int!, input: EmployeeInput): Employee
+  deleteEmployee(id: Int!): Boolean
+
+}
