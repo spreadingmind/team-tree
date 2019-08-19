@@ -1,7 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
-
 import { DepartmentName, PositionName } from 'src/definitions';
 import { EmployeeEntity } from 'src/employee/employee.entity';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('position')
 export class PositionEntity {

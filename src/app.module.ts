@@ -4,8 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PositionModule } from './position/position.module';
 import { EmployeeModule } from './employee/employee.module';
+import { PositionModule } from './position/position.module';
 
 @Module({
   imports: [

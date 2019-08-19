@@ -1,6 +1,7 @@
-import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
-import { PositionService } from './position.service';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { PositionInput } from 'src/definitions';
+
+import { PositionService } from './position.service';
 
 @Resolver('Position')
 export class PositionResolver {

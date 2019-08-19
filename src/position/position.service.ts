@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { PositionInput } from 'src/definitions';
+import { Repository } from 'typeorm';
+
+import { Position } from '../definitions';
+
 import { PositionEntity } from './position.entity';
 import { PositionTreeItem } from './position.interfaces';
-import { Position } from '../definitions';
 
 @Injectable()
 export class PositionService {

@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, DeleteResult, FindConditions } from 'typeorm';
+import { DeleteResult, FindConditions, Repository } from 'typeorm';
 
 import { EmployeeInput } from '../definitions';
+
 import { EmployeeEntity } from './employee.entity';
 
 @Injectable()
