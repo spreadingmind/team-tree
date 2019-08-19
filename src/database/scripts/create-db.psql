@@ -1,0 +1,29 @@
+CREATE DATABASE iq_option_team;
+\c iq_option_team;
+
+CREATE TYPE positonsEnum AS ENUM ('Chief', 'CTO', 'CEO', 'Product Owner', 'Chief Architect', 'Head');
+CREATE TYPE departmentsEnum AS ENUM ('IQ Option', 'Product Management', 'Technology', 'Administration', 'Product',
+'Architecture', 'Office Team');
+
+CREATE TABLE employee (
+    id INT,
+    first_name character varying(100) NOT NULL,
+    last_name character varying(100) NOT NULL
+);
+
+CREATE TABLE position (
+    id INT,
+    name positonsEnum NOT NULL,
+    employee_id INT,
+    parent_id: INT,
+    department_name departmentsEnum NOT NULL
+);
+
+ALTER TABLE ONLY employee ADD CONSTRAINT employee_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY position ADD CONSTRAINT position_pkey PRIMARY KEY (id);
+ALTER TABLE position ADD CONSTRAINT onDeleteEmployee
+FOREIGN KEY (employee_id) REFERENCES employee (id)
+ON DELETE SET NULL;
+ALTER TABLE position ADD FOREIGN KEY (parent_id)
+REFERENCES position (id)
+ON DELETE SET NULL;
